@@ -16,6 +16,11 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
+    public function create(){
+
+        return view('users.create');
+    }
+
     public function store(Request $request){
 
         $validated = $request->validate([
@@ -25,14 +30,18 @@ class UserController extends Controller
             'password' => 'required|string|confirmed',
         ]);
 
-        $user = User::creat([
+        $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'phone_number' => $validated['phone_number'],
-            'passowrd' => Hash::make($request['password']), 
+            'password' => Hash::make($request['password']), 
         ]);
 
-        return redirect()->route('')->with('sucess', 'User added successfully!');
+        return redirect()->route('users.index')->with('sucess', 'User added successfully!');
+    }
+ 
+    public function update( Request $request, User $user){
+        
     }
 
     public function destroy(int $id){
