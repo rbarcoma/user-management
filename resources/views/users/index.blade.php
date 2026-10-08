@@ -8,6 +8,10 @@
 </head>
 <body>
     <div>
+        @if (session('success'))
+            <div class="alert alert-success"> {{ session('success') }}</div>
+            
+        @endif
         <div class="col-sm-6">
             <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary">Add new users</a>
         </div>
