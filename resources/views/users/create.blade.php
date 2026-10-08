@@ -8,23 +8,49 @@
 </head>
 <body>
     <div>
+       
         <form action="{{ route('users.store') }}" method="POST">
             @csrf
 
             <label for="">Full Name: </label>
             <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Enter you Name" required>
+            @error('name')
+                <div class="text text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
 
             <label for="">Email: </label>
-            <input type="email" name="email" id="name" value="{{ old('name') }}" placeholder="Enter you Name" required>
+            <input type="email" name="email" id="name" value="{{ old('email') }}" placeholder="Enter you Name" required>
+            @error('email')
+                <div class="text text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
 
             <label for="">Phone Number: </label>
-            <input type="text" name="phone_number" id="phone_number" value="{{ old('name') }}" placeholder="Enter you Name" required>
-
+            <input type="text" name="phone_number" id="phone_number" value="{{ old('phone_number') }}" placeholder="Enter you Name" required>
+            @error('phone_number')
+                <div class="text text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
+        
             <label for="">Password: </label>
             <input type="password" name="password" id="password" placeholder="Enter you Name" required>
+            @error('password')
+                <div class="text text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
 
             <label for="">Confirm Password: </label>
             <input type="password" name="password_confirmation" id="password" placeholder="Enter you Name" required>
+            @error('password_confirmation')
+                <div class="text text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
 
             <input type="submit" value="Add new user">
         </form>
